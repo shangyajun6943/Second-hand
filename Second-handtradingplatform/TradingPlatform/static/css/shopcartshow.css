@@ -1,0 +1,32 @@
+a{
+	text-decoration: none;
+	color:#52D0C4;
+}
+a:hover{
+
+	color:#52D0C4;
+}
+
+.ring-in{
+	width:40%;
+}
+.check{
+	width:11%;
+}
+.add,.reduce{
+	width:25px;
+	height:25px;
+}
+
+.check input[type="text"]{
+    width: 40%;
+  padding: 0.3em;
+  margin: 1em 0;
+  background: #fff;
+  outline: none;
+  text-align: center;
+   border: 1px solid #000;
+}
+.sed{
+    color: #cccccc;
+}

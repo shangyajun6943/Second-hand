@@ -1,0 +1,50 @@
+{% extends "common/base2.html" %}
+{% load static %}
+{%block cssjs%}{%endblock%}
+{% block title %}用户中心{% endblock %}
+
+{% block content %}
+    <div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+					<li><a href="{%url 'account:user_detail'%}" class="active">· 个人信息</a></li>
+					<li><a href="{%url 'account:user_address_info'%}">· 收货地址</a></li>
+					<li><a href="{%url 'account:user_order_info'%}">· 全部订单</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<h3 class="common_title2">收货地址</h3>
+				<div class="site_con">
+{#                    这里要用循环去从数据库里面取出数据#}
+					<dl>
+						<dt>当前地址：</dt>
+						<dd>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>
+					</dl>
+				</div>
+				<h3 class="common_title2">编辑地址</h3>
+				<div class="site_con">
+					<form method="post" action="#">
+						<div class="form_group">
+							<label>收件人：</label>
+							<input type="text" name="">
+						</div>
+						<div class="form_group form_group2">
+							<label>详细地址：</label>
+							<textarea class="site_area"></textarea>
+						</div>
+						<div class="form_group">
+							<label>邮编：</label>
+							<input type="text" name="">
+						</div>
+						<div class="form_group">
+							<label>手机：</label>
+							<input type="text" name="">
+						</div>
+
+						<input type="submit" name="" value="提交" class="info_submit">
+					</form>
+				</div>
+		</div>
+	</div>
+{% endblock %}

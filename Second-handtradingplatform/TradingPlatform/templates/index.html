@@ -1,0 +1,139 @@
+{% extends "common/base.html" %}
+{% load static %}
+{%block title%}首页{%endblock%}
+{%block cssjs%}
+<script src="{% static 'js/responsiveslides.min.js'%}"></script>
+<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+  <style>
+	.col-ban-1{
+		width: 20%;
+		height: 400px;
+	}
+	.img-responsive{
+		height: 100%;
+	  }
+	.banner{
+		transform-style: preserve-3d;
+		border: none;
+	}
+	.banner-img{
+		border-radius: 5px;
+	}
+	.banner div:nth-of-type(1){
+        transform:rotateY(30deg) translateZ(10px);
+    }
+    .banner div:nth-of-type(2){
+        transform:rotateY(30deg) translateZ(10px);
+    }
+    .banner div:nth-of-type(3){
+        transform:translateZ(10px);
+    }
+	.banner div:nth-of-type(4){
+        transform:rotateY(-30deg) translateZ(10px);
+    }
+    .banner div:nth-of-type(5){
+        transform:rotateY(-30deg) translateZ(10px);
+    }
+	.banner:hover{
+		transition: 5s;
+		transform: rotateX(-8deg) rotateY(360deg);
+	}
+	.col-shop-bom-margin{
+		margin-bottom: 20px;
+	}
+	.img-box{
+		width: 185px;
+		height: 207px;
+	}
+  </style>
+  <script>
+	  $(function(){
+		var $img=$(".banner-img");
+		var num=2;
+		window.setInterval(function(){
+			$.each($img,function(index,value){
+				var url_img=$(value).attr("src");
+				var url_arr=url_img.split("_");
+				var url_now=url_arr[0]+"_"+num+".jpg";
+				$(value).attr("src",url_now);
+			});
+			num++;
+			if(num===6){
+				num=1;
+			};
+		},2000);
+	  });
+	  
+  </script>
+{%endblock%}
+{%block content%}
+<!--banner-->
+<div class="banner">
+	<div class="col-sm-3 banner-mat col-ban-1">			
+		<img class="img-responsive banner-img"	src="{% static 'images/banner/ba1_1.jpg'%}" alt="">
+	</div>
+	<div class="col-sm-3 banner-mat col-ban-1">		
+		<img class="img-responsive banner-img"	src="{% static 'images/banner/ba2_1.jpg'%}" alt="">
+	</div>
+	<div class="col-sm-3 banner-mat col-ban-1">	
+		<img class="img-responsive banner-img"	src="{% static 'images/banner/ba3_1.jpg'%}" alt="">
+	</div>
+	<div class="col-sm-3 banner-mat col-ban-1">	
+		<img class="img-responsive banner-img"	src="{% static 'images/banner/ba4_1.jpg'%}" alt="">
+	</div>
+	<div class="col-sm-3 banner-mat col-ban-1">
+		<img class="img-responsive banner-img" src="{% static 'images/banner/ba5_1.jpg'%}" alt="">
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<div class="clearfix"> </div>
+<!--//banner-->
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+<!--content-->
+<div class="content">
+	<div class="container">
+		{%for index,product_type in products%}
+		<div class="content-top">
+			{%ifequal index 1 %}
+			<h1>NEW T-shirt</h1>
+			{%endifequal%}
+			{%ifequal index 2 %}
+			<h1>NEW Trousers</h1>
+			{%endifequal%}
+			{%ifequal index 3 %}
+			<h1>NEW Shoes</h1>
+			{%endifequal%}
+			<div class="content-top1">
+				{%for product in product_type%}
+				<div class="col-md-3 col-md2 col-shop-bom-margin">
+					<div class="col-md1 simpleCart_shelfItem">
+						<a href="{% url 'showgoods:single' product.id %}">	
+							<img class="img-responsive img-box" src="{% static product.img_1 %}" alt="" />
+						</a>
+						<h3><span style="color:#333;">销量: {{product.pro_volume}}</span></h3>
+						<div class="price">
+								<h5 class="item_price"><span style="color:#f40;">{{product.price}}</span>
+									<span style="font-size:16px;">￥</span></h5>
+								<a href="{% url 'showgoods:single' product.id %}" class="item_add">查看详情</a>
+								<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+				{%endfor%}	
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		{%endfor%}
+	</div>
+</div>
+<!--//content-->
+{%endblock%}

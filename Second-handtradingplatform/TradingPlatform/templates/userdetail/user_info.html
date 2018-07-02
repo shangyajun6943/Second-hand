@@ -1,0 +1,16 @@
+{% extends "common/base.html" %}
+{% load static %}
+{%block cssjs%}
+<style>
+    iframe{
+        width: 100%;
+        height: 600px;
+        margin-top: 30px;
+    }
+
+</style>
+{%endblock%}
+{% block title %}用户中心{% endblock %}
+{% block content %}
+<iframe src="{%url 'account:user_detail2'%}" frameborder="0"></iframe>
+{% endblock %}

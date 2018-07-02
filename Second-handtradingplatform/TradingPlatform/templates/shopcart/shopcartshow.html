@@ -1,0 +1,65 @@
+{% extends "common/base.html" %}
+{% load static %}
+{%block title%}购物车{%endblock%}
+{%block cssjs%}
+    <link rel="stylesheet" href="{% static 'css/shopcartshow.css'%}">
+{%endblock%}
+{%block content%}
+<!---->
+<div class="container">
+        <div class="check-out" id="check-out">
+            <h1>Checkout</h1>
+            <table >
+                <tr>
+
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Prices</th>
+                    <th>Delery Detials</th>
+                    <th>Subtotal</th>
+                    <th>Select</th>
+                </tr>
+                {% if shopcart.order_item_list %}
+                    {% for item in shopcart.order_item_list %}
+                    <tr>
+                        <td class="ring-in">
+                        <a href="single.html" class="at-in"><img src="{%static item.product.img_1 %}" class="img-responsive" alt=""></a>
+                            <div class="sed">
+                                <b>商家:{{ shopcart.shop_user.shop_name}}</b>
+                                <h5><a href="#">{{ item.product.pro_name }}</a></h5>
+                                <p>{{ item.product.pro_introduction }} </p>
+
+                            </div>
+                            <div class="clearfix"> </div>
+                        </td>
+                        <td class="check">
+                            <input type="button" value="-" class="reduce">
+                            <input type="text" name="quantity" value={{item.order_item.quantity}} />
+                            <input type="button" value="+" class="add">
+                        </td>
+                        <td>{{ item.product.price }}</td>
+                        <td>{{ item.product.pro_introduction }}</td>
+                        <td class="shopcart_total_1" style="color:#f40;">{{item.order_item.subtotal}}</td>
+                        <td>
+                            <input type="checkbox" name="select_one">
+                            <br />
+                            <a href="javascript:;" name="del" ord="{{item.order_item.id}}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><span>total：</span><b name="subtotal"></b></td>
+                        <td>全选：<input type="checkbox" id="select_all" ></td>
+                    </tr>
+                {% endif %}
+            </table>
+            <a href="javascript:;" class=" to-buy">支付</a>
+            <div class="clearfix"> </div>
+        </div>
+</div>
+<script src="{%static 'js/shopcartshow.js' %}"></script>
+{%endblock%}

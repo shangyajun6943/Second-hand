@@ -1,0 +1,8 @@
+.login-right input[type="password"] {
+	border: 1px solid #bbb;
+	outline-color:#52d0c4;
+	width: 96%;
+	font-size:0.9em;
+	padding:10px;
+    margin: 0.5em 0;
+}

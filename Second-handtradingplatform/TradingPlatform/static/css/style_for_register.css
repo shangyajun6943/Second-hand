@@ -1,0 +1,33 @@
+.register-top-grid span, .register-bottom-grid span {
+	color:#b2b2b2;
+	font-size: 0.9em;
+	padding-bottom: 0.2em;
+	display: block;
+}
+.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#52D0C4;
+	width: 100%;
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 0.5em 0;
+}
+.register-but{
+	margin-top:1em;
+}
+.register-but  input[type="submit"] {
+	background:#52D0C4;
+	color: #FFF;
+	font-size:1em;
+	padding: 0.4em 1em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	border:none;
+	outline:none;
+}
+.register-but input[type="submit"]:hover {
+	background:#000;
+}
